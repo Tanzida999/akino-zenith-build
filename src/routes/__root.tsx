@@ -79,10 +79,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Akino Group Co., Ltd. — Professional Business Solutions in Japan" },
       { name: "description", content: "Akino Group (株式会社アキノグループ) — Tokyo-based Kabushiki Kaisha providing cleaning, web development, social media, and digital business support." },
       { name: "author", content: "Akino Group Co., Ltd." },
-      { property: "og:title", content: "Akino Group Co., Ltd." },
-      { property: "og:description", content: "Reliable cleaning, web, and digital services for modern businesses in Japan." },
+      { property: "og:title", content: "Akino Group Co., Ltd. — Professional Business Solutions in Japan" },
+      { property: "og:description", content: "Akino Group (株式会社アキノグループ) — Tokyo-based Kabushiki Kaisha providing cleaning, web development, social media, and digital business support." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "Akino Group Co., Ltd. — Professional Business Solutions in Japan" },
+      { name: "twitter:description", content: "Akino Group (株式会社アキノグループ) — Tokyo-based Kabushiki Kaisha providing cleaning, web development, social media, and digital business support." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ab44850f-a239-4969-a01a-3ac3861f9b1a/id-preview-8641e5b9--caaf64bc-5917-4032-a96f-92adcbde5f77.lovable.app-1778220813304.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ab44850f-a239-4969-a01a-3ac3861f9b1a/id-preview-8641e5b9--caaf64bc-5917-4032-a96f-92adcbde5f77.lovable.app-1778220813304.png" },
     ],
     links: [
       {
