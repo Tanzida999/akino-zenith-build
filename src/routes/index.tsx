@@ -2,7 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Shield, Globe2, Users, Star, Quote } from "lucide-react";
-import heroImg from "@/assets/hero.jpg";
+import { useEffect, useState } from "react";
+import slide1 from "@/assets/slide-1.jpg";
+import slide2 from "@/assets/slide-2.jpg";
+import slide3 from "@/assets/slide-3.jpg";
+import proj1 from "@/assets/proj-1.jpg";
+import proj2 from "@/assets/proj-2.jpg";
+import proj3 from "@/assets/proj-3.jpg";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/site/Reveal";
 import { useI18n } from "@/lib/i18n";
@@ -21,13 +27,32 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const { t } = useI18n();
+  const slides = [slide1, slide2, slide3];
+  const [active, setActive] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setActive((i) => (i + 1) % slides.length), 5000);
+    return () => clearInterval(id);
+  }, [slides.length]);
   return (
     <>
       {/* HERO */}
       <section className="relative -mt-16 min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="" width={1920} height={1280} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[var(--gradient-hero)]" />
+          {slides.map((src, i) => (
+            <motion.img
+              key={src}
+              src={src}
+              alt=""
+              width={1600}
+              height={1067}
+              className="absolute inset-0 w-full h-full object-cover"
+              initial={false}
+              animate={{ opacity: active === i ? 1 : 0, scale: active === i ? 1.03 : 1 }}
+              transition={{ opacity: { duration: 1.2 }, scale: { duration: 6, ease: "linear" } }}
+            />
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/75 to-background/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
         </div>
         <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 vrl text-xs tracking-[0.4em] text-muted-foreground">
           株式会社アキノグループ — TOKYO
@@ -70,6 +95,17 @@ function Index() {
               <Link to="/services">{t("hero.cta2")}</Link>
             </Button>
           </motion.div>
+          {/* Slide indicators */}
+          <div className="mt-16 flex items-center gap-3">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                aria-label={`Slide ${i + 1}`}
+                className={`h-px transition-all ${active === i ? "w-12 bg-accent" : "w-6 bg-foreground/30"}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -154,18 +190,19 @@ function Index() {
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { tag: "Web", title: "Mori Architects", num: "01" },
-              { tag: "Cleaning", title: "Shibuya Tower", num: "02" },
-              { tag: "Social", title: "Sakura Cafe", num: "03" },
+              { tag: "Web", title: "Mori Architects", num: "01", img: proj1 },
+              { tag: "Cleaning", title: "Shibuya Tower", num: "02", img: proj2 },
+              { tag: "Social", title: "Sakura Cafe", num: "03", img: proj3 },
             ].map((p, i) => (
               <Reveal key={p.title} delay={i * 0.1}>
                 <div className="group cursor-pointer">
-                  <div className="aspect-[4/5] bg-gradient-to-br from-secondary to-muted relative overflow-hidden mb-4">
-                    <div className="absolute inset-0 flex items-end p-6">
-                      <span className="vrl text-[10rem] font-display text-foreground/5 leading-none">{p.num}</span>
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-display text-3xl text-foreground/40 group-hover:text-accent transition-colors">{p.title}</span>
+                  <div className="aspect-[4/5] bg-secondary relative overflow-hidden mb-4">
+                    <img src={p.img} alt={p.title} loading="lazy" width={1024} height={1280}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-background">
+                      <span className="font-display text-2xl">{p.title}</span>
+                      <span className="font-display text-3xl opacity-70">{p.num}</span>
                     </div>
                   </div>
                   <div className="flex justify-between text-xs tracking-widest uppercase text-muted-foreground">

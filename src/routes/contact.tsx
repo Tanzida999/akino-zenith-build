@@ -109,7 +109,7 @@ function Contact() {
             <div className="bg-foreground text-background p-8">
               <p className="text-xs tracking-widest uppercase text-accent mb-6">Direct contact</p>
               <ul className="space-y-5 text-sm">
-                <li className="flex gap-4"><MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" /><span>〒100-0001<br />Chiyoda-ku, Tokyo, Japan</span></li>
+                <li className="flex gap-4"><MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" /><span>〒344-0124 埼玉県春日部市せんげん台 1-129<br />Saitama-ken, Kasukabe-shi, Sengendai 1-129, Japan</span></li>
                 <li className="flex gap-4"><Mail className="h-5 w-5 text-accent shrink-0 mt-0.5" /><a href="mailto:info@akino-group.jp" className="hover:text-accent">info@akino-group.jp</a></li>
                 <li className="flex gap-4"><Phone className="h-5 w-5 text-accent shrink-0 mt-0.5" /><a href="tel:+81300000000" className="hover:text-accent">+81 3-0000-0000</a></li>
               </ul>
@@ -124,14 +124,14 @@ function Contact() {
               </a>
             </div>
 
-            <div className="aspect-[4/3] bg-gradient-to-br from-secondary to-muted border border-border relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-                <div>
-                  <MapPin className="h-8 w-8 text-accent mx-auto mb-3" />
-                  <p className="font-display text-xl">Tokyo Office</p>
-                  <p className="text-xs text-muted-foreground tracking-widest mt-1">GOOGLE MAPS PLACEHOLDER</p>
-                </div>
-              </div>
+            <div className="aspect-[4/3] border border-border relative overflow-hidden">
+              <iframe
+                title="Akino Group Office — Sengendai, Kasukabe, Saitama"
+                src="https://www.google.com/maps?q=Sengendai+1-129,+Kasukabe-shi,+Saitama&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full grayscale contrast-110"
+              />
             </div>
           </Reveal>
         </div>
