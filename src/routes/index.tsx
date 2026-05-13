@@ -63,7 +63,7 @@ function Index() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-10 flex flex-wrap gap-4"
           >
-            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-none h-14 px-8 shadow-[var(--shadow-glow)]">
+            <Button asChild size="lg" className="bg-highlight hover:bg-highlight/90 text-highlight-foreground rounded-none h-14 px-8 shadow-[var(--shadow-glow)]">
               <Link to="/contact">{t("hero.cta1")} <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-none h-14 px-8 border-foreground/20 hover:bg-foreground hover:text-background">
@@ -217,7 +217,7 @@ function Index() {
               A 30-minute consultation to understand your needs — at no cost, in English or Japanese.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-none h-14 px-8">
+              <Button asChild size="lg" className="bg-highlight hover:bg-highlight/90 text-highlight-foreground rounded-none h-14 px-8">
                 <Link to="/contact">{t("hero.cta1")} <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-none h-14 px-8">
