@@ -35,8 +35,11 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-col md:flex-row justify-between text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Akino Group Co., Ltd. {t("footer.rights")}</p>
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 text-xs text-muted-foreground">
+          <div className="flex flex-col gap-1">
+            <p className="font-display italic tracking-wide text-[13px] text-foreground/70">Designed by Akino Group</p>
+            <p>© {new Date().getFullYear()} Akino Group Co., Ltd. {t("footer.rights")}</p>
+          </div>
           <p className="tracking-widest">株式会社アキノグループ</p>
         </div>
       </div>
