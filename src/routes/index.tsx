@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import slide1 from "@/assets/slide-1.jpg";
 import slide2 from "@/assets/slide-2.jpg";
 import slide3 from "@/assets/slide-3.jpg";
+import proj1 from "@/assets/proj-1.jpg";
+import proj2 from "@/assets/proj-2.jpg";
+import proj3 from "@/assets/proj-3.jpg";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/site/Reveal";
 import { useI18n } from "@/lib/i18n";
@@ -187,18 +190,19 @@ function Index() {
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { tag: "Web", title: "Mori Architects", num: "01" },
-              { tag: "Cleaning", title: "Shibuya Tower", num: "02" },
-              { tag: "Social", title: "Sakura Cafe", num: "03" },
+              { tag: "Web", title: "Mori Architects", num: "01", img: proj1 },
+              { tag: "Cleaning", title: "Shibuya Tower", num: "02", img: proj2 },
+              { tag: "Social", title: "Sakura Cafe", num: "03", img: proj3 },
             ].map((p, i) => (
               <Reveal key={p.title} delay={i * 0.1}>
                 <div className="group cursor-pointer">
-                  <div className="aspect-[4/5] bg-gradient-to-br from-secondary to-muted relative overflow-hidden mb-4">
-                    <div className="absolute inset-0 flex items-end p-6">
-                      <span className="vrl text-[10rem] font-display text-foreground/5 leading-none">{p.num}</span>
-                    </div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-display text-3xl text-foreground/40 group-hover:text-accent transition-colors">{p.title}</span>
+                  <div className="aspect-[4/5] bg-secondary relative overflow-hidden mb-4">
+                    <img src={p.img} alt={p.title} loading="lazy" width={1024} height={1280}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between text-background">
+                      <span className="font-display text-2xl">{p.title}</span>
+                      <span className="font-display text-3xl opacity-70">{p.num}</span>
                     </div>
                   </div>
                   <div className="flex justify-between text-xs tracking-widest uppercase text-muted-foreground">
