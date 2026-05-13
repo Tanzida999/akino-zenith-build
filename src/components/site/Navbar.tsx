@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sparkles, Sun, X } from "lucide-react";
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
@@ -21,7 +21,17 @@ export function Navbar() {
   ] as const;
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 glass border-b border-border/60">
+    <header className="fixed top-0 inset-x-0 z-50">
+      <div className="bg-highlight text-highlight-foreground">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 h-9 flex items-center justify-center gap-3 text-[11px] sm:text-xs tracking-widest uppercase font-medium">
+          <Sparkles className="h-3.5 w-3.5" />
+          <span className="hidden sm:inline">期間限定キャンペーン —</span>
+          <span>20% OFF</span>
+          <span className="opacity-70">|</span>
+          <Link to="/contact" className="underline underline-offset-4 hover:opacity-80">初回相談 無料</Link>
+        </div>
+      </div>
+      <div className="glass border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <span className="h-7 w-1 bg-accent rounded-full" />
@@ -74,6 +84,7 @@ export function Navbar() {
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+      </div>
       </div>
 
       {open && (
