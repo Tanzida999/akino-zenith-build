@@ -67,7 +67,7 @@ function Index() {
               <Link to="/contact">{t("hero.cta1")} <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-none h-14 px-8 border-foreground/20 hover:bg-foreground hover:text-background">
-              <Link to="/contact">{t("hero.cta2")}</Link>
+              <Link to="/services">{t("hero.cta2")}</Link>
             </Button>
           </motion.div>
         </div>
