@@ -124,14 +124,14 @@ function Contact() {
               </a>
             </div>
 
-            <div className="aspect-[4/3] bg-gradient-to-br from-secondary to-muted border border-border relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-                <div>
-                  <MapPin className="h-8 w-8 text-accent mx-auto mb-3" />
-                  <p className="font-display text-xl">Sengendai Office</p>
-                  <p className="text-xs text-muted-foreground tracking-widest mt-1">埼玉県春日部市せんげん台 1-129</p>
-                </div>
-              </div>
+            <div className="aspect-[4/3] border border-border relative overflow-hidden">
+              <iframe
+                title="Akino Group Office — Sengendai, Kasukabe, Saitama"
+                src="https://www.google.com/maps?q=Sengendai+1-129,+Kasukabe-shi,+Saitama&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full grayscale contrast-110"
+              />
             </div>
           </Reveal>
         </div>
