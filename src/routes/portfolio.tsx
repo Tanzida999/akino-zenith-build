@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/site/Reveal";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 import p1 from "@/assets/proj-1.jpg";
 import p2 from "@/assets/proj-2.jpg";
 import p3 from "@/assets/proj-3.jpg";
@@ -16,37 +17,45 @@ export const Route = createFileRoute("/portfolio")({
   component: Portfolio,
   head: () => ({
     meta: [
-      { title: "Portfolio — Akino Group Co., Ltd." },
-      { name: "description", content: "Selected web, social, and cleaning projects delivered by Akino Group across Japan." },
-      { property: "og:title", content: "Portfolio — Akino Group" },
-      { property: "og:description", content: "Selected work — websites, campaigns, and facility transformations." },
+      { title: "実績 — 株式会社アキノグループ" },
+      { name: "description", content: "アキノグループが日本全国で手がけたWeb・SNS・清掃の実績紹介。" },
     ],
   }),
 });
 
-const PROJECTS = [
-  { cat: "Web", title: "Mori Architects", desc: "Bilingual studio website with custom CMS.", year: "2024", img: p1 },
-  { cat: "Cleaning", title: "Shibuya Tower", desc: "Daily maintenance for 32-floor mixed-use facility.", year: "2024", img: p2 },
-  { cat: "Social", title: "Sakura Cafe", desc: "Instagram-led campaign — +180% followers in 6 months.", year: "2024", img: p3 },
-  { cat: "Web", title: "Kyoto Ryokan", desc: "Booking platform with multilingual support.", year: "2023", img: p4 },
-  { cat: "Cleaning", title: "Marunouchi Office", desc: "Post-renovation deep cleaning for 4,000 m².", year: "2023", img: p5 },
-  { cat: "Social", title: "Tokyo Kitchen", desc: "TikTok strategy reaching 2M impressions monthly.", year: "2024", img: p6 },
-  { cat: "Branding", title: "Aoba Clinic", desc: "Identity refresh and printed collateral.", year: "2023", img: p7 },
-  { cat: "Web", title: "Akino Internal", desc: "Operational dashboard for 50+ field staff.", year: "2024", img: p8 },
-] as const;
-
-const CATS = ["All", "Web", "Cleaning", "Social", "Branding"] as const;
+type CatKey = "all" | "web" | "cleaning" | "social" | "branding";
 
 function Portfolio() {
-  const [active, setActive] = useState<(typeof CATS)[number]>("All");
-  const filtered = PROJECTS.filter((p) => active === "All" || p.cat === active);
+  const { t } = useI18n();
+  const [active, setActive] = useState<CatKey>("all");
+
+  const CATS: { key: CatKey; label: string }[] = [
+    { key: "all", label: t("pf.cat.all") },
+    { key: "web", label: t("pf.cat.web") },
+    { key: "cleaning", label: t("pf.cat.cleaning") },
+    { key: "social", label: t("pf.cat.social") },
+    { key: "branding", label: t("pf.cat.branding") },
+  ];
+
+  const PROJECTS: { cat: CatKey; catLabel: string; title: string; desc: string; year: string; img: string }[] = [
+    { cat: "web", catLabel: t("pf.cat.web"), title: t("pf.p1.title"), desc: t("pf.p1.desc"), year: "2024", img: p1 },
+    { cat: "cleaning", catLabel: t("pf.cat.cleaning"), title: t("pf.p2.title"), desc: t("pf.p2.desc"), year: "2024", img: p2 },
+    { cat: "social", catLabel: t("pf.cat.social"), title: t("pf.p3.title"), desc: t("pf.p3.desc"), year: "2024", img: p3 },
+    { cat: "web", catLabel: t("pf.cat.web"), title: t("pf.p4.title"), desc: t("pf.p4.desc"), year: "2023", img: p4 },
+    { cat: "cleaning", catLabel: t("pf.cat.cleaning"), title: t("pf.p5.title"), desc: t("pf.p5.desc"), year: "2023", img: p5 },
+    { cat: "social", catLabel: t("pf.cat.social"), title: t("pf.p6.title"), desc: t("pf.p6.desc"), year: "2024", img: p6 },
+    { cat: "branding", catLabel: t("pf.cat.branding"), title: t("pf.p7.title"), desc: t("pf.p7.desc"), year: "2023", img: p7 },
+    { cat: "web", catLabel: t("pf.cat.web"), title: t("pf.p8.title"), desc: t("pf.p8.desc"), year: "2024", img: p8 },
+  ];
+
+  const filtered = PROJECTS.filter((p) => active === "all" || p.cat === active);
 
   return (
     <>
       <PageHeader
-        kicker="Portfolio — 実績"
-        title={<>Selected <em className="not-italic text-accent">work</em>.</>}
-        sub="A glimpse of recent engagements across cleaning, web, social, and brand. Every project is treated as a long-term partnership."
+        kicker={t("pf.kicker")}
+        title={<>{t("pf.title.a")}<em className="not-italic text-accent">{t("pf.title.b")}</em>{t("pf.title.c")}</>}
+        sub={t("pf.sub")}
       />
 
       <section className="py-16 lg:py-24">
@@ -54,16 +63,16 @@ function Portfolio() {
           <div className="flex flex-wrap gap-2 mb-12">
             {CATS.map((c) => (
               <button
-                key={c}
-                onClick={() => setActive(c)}
+                key={c.key}
+                onClick={() => setActive(c.key)}
                 className={cn(
                   "px-4 py-2 text-xs tracking-widest uppercase border transition-colors",
-                  active === c
+                  active === c.key
                     ? "bg-foreground text-background border-foreground"
                     : "border-border hover:border-accent hover:text-accent",
                 )}
               >
-                {c}
+                {c.label}
               </button>
             ))}
           </div>
@@ -82,7 +91,7 @@ function Portfolio() {
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="absolute top-4 left-4 text-[10px] tracking-widest uppercase bg-background/85 backdrop-blur px-2 py-1">{p.cat}</div>
+                    <div className="absolute top-4 left-4 text-[10px] tracking-widest uppercase bg-background/85 backdrop-blur px-2 py-1">{p.catLabel}</div>
                     <div className="absolute bottom-4 right-4 font-display text-5xl text-background/80 mix-blend-difference">{String(i + 1).padStart(2, "0")}</div>
                   </div>
                   <div className="mt-4 flex justify-between items-start gap-4">

@@ -55,7 +55,7 @@ function Index() {
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
         </div>
         <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 vrl text-xs tracking-[0.4em] text-muted-foreground">
-          株式会社アキノグループ — TOKYO
+          {t("hero.vrl")}
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-32 pb-20 w-full">
           <motion.p
@@ -113,17 +113,15 @@ function Index() {
       <section className="py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4">01 — Services</p>
-            <h2 className="text-4xl md:text-5xl font-display font-medium max-w-2xl text-balance">
-              Four disciplines, one standard of excellence.
-            </h2>
+            <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4">{t("home.services.kicker")}</p>
+            <h2 className="text-4xl md:text-5xl font-display font-medium max-w-2xl text-balance">{t("home.services.title")}</h2>
           </Reveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px mt-16 bg-border">
             {[
-              { title: "Cleaning Services", jp: "清掃サービス", desc: "Office, retail, and facility cleaning held to omotenashi standards." },
-              { title: "Website Development", jp: "Web制作", desc: "Bespoke, fast, and accessible sites built with modern tooling." },
-              { title: "Social Media", jp: "SNS運用", desc: "Strategy, content, and community across Japan and global audiences." },
-              { title: "Digital Support", jp: "デジタル支援", desc: "Branding, ads, and operational digital tools for growing teams." },
+              { title: t("home.svc.cleaning"), jp: t("home.svc.cleaning.jp"), desc: t("home.svc.cleaning.desc") },
+              { title: t("home.svc.web"), jp: t("home.svc.web.jp"), desc: t("home.svc.web.desc") },
+              { title: t("home.svc.sns"), jp: t("home.svc.sns.jp"), desc: t("home.svc.sns.desc") },
+              { title: t("home.svc.digital"), jp: t("home.svc.digital.jp"), desc: t("home.svc.digital.desc") },
             ].map((s, i) => (
               <Reveal key={s.title} delay={i * 0.08}>
                 <div className="bg-background p-8 lg:p-10 h-full group hover:bg-secondary transition-colors">
@@ -134,7 +132,7 @@ function Index() {
                   <h3 className="text-xl font-display font-medium mb-3">{s.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-8">{s.desc}</p>
                   <Link to="/services" className="text-xs tracking-widest uppercase inline-flex items-center gap-2 group-hover:text-accent transition-colors">
-                    Learn more <ArrowRight className="h-3 w-3" />
+                    {t("home.svc.learn")} <ArrowRight className="h-3 w-3" />
                   </Link>
                 </div>
               </Reveal>
@@ -147,20 +145,16 @@ function Index() {
       <section className="py-24 lg:py-32 bg-secondary/40">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <Reveal>
-            <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4">02 — Why Akino</p>
-            <h2 className="text-4xl md:text-5xl font-display font-medium text-balance leading-tight">
-              Japanese precision, applied to every project.
-            </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
-              We blend the discipline of traditional Japanese craft with modern execution. Every engagement is treated with the same attention — whether it's a polished floor or a polished interface.
-            </p>
+            <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4">{t("home.why.kicker")}</p>
+            <h2 className="text-4xl md:text-5xl font-display font-medium text-balance leading-tight">{t("home.why.title")}</h2>
+            <p className="mt-6 text-muted-foreground leading-relaxed">{t("home.why.sub")}</p>
           </Reveal>
           <div className="grid sm:grid-cols-2 gap-6">
             {[
-              { icon: Shield, title: "Trusted KK", desc: "Registered Kabushiki Kaisha with full compliance." },
-              { icon: Sparkles, title: "Premium Quality", desc: "Senior craftsmen and developers on every job." },
-              { icon: Globe2, title: "Bilingual Team", desc: "Communication in Japanese and English." },
-              { icon: Users, title: "Long-Term Partner", desc: "We grow with you, not just deliver to you." },
+              { icon: Shield, title: t("home.why.f1.title"), desc: t("home.why.f1.desc") },
+              { icon: Sparkles, title: t("home.why.f2.title"), desc: t("home.why.f2.desc") },
+              { icon: Globe2, title: t("home.why.f3.title"), desc: t("home.why.f3.desc") },
+              { icon: Users, title: t("home.why.f4.title"), desc: t("home.why.f4.desc") },
             ].map((f, i) => (
               <Reveal key={f.title} delay={i * 0.06}>
                 <div className="bg-background p-6 border border-border shadow-[var(--shadow-soft)] h-full">
@@ -180,19 +174,19 @@ function Index() {
           <Reveal>
             <div className="flex items-end justify-between flex-wrap gap-4 mb-16">
               <div>
-                <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4">03 — Selected Work</p>
-                <h2 className="text-4xl md:text-5xl font-display font-medium">Recent engagements</h2>
+                <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4">{t("home.work.kicker")}</p>
+                <h2 className="text-4xl md:text-5xl font-display font-medium">{t("home.work.title")}</h2>
               </div>
               <Link to="/portfolio" className="text-sm tracking-wide inline-flex items-center gap-2 hover:text-accent">
-                View portfolio <ArrowRight className="h-4 w-4" />
+                {t("home.work.view")} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { tag: "Web", title: "Mori Architects", num: "01", img: proj1 },
-              { tag: "Cleaning", title: "Shibuya Tower", num: "02", img: proj2 },
-              { tag: "Social", title: "Sakura Cafe", num: "03", img: proj3 },
+              { tag: t("pf.cat.web"), title: t("pf.p1.title"), num: "01", img: proj1 },
+              { tag: t("pf.cat.cleaning"), title: t("pf.p2.title"), num: "02", img: proj2 },
+              { tag: t("pf.cat.social"), title: t("pf.p3.title"), num: "03", img: proj3 },
             ].map((p, i) => (
               <Reveal key={p.title} delay={i * 0.1}>
                 <div className="group cursor-pointer">
@@ -219,14 +213,14 @@ function Index() {
       <section className="py-24 lg:py-32 bg-foreground text-background">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
-            <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4">04 — Voices</p>
-            <h2 className="text-4xl md:text-5xl font-display font-medium max-w-2xl mb-16">What partners say.</h2>
+            <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4">{t("home.voices.kicker")}</p>
+            <h2 className="text-4xl md:text-5xl font-display font-medium max-w-2xl mb-16">{t("home.voices.title")}</h2>
           </Reveal>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { quote: "Akino transformed how our office feels — every detail considered.", name: "T. Yamada", role: "COO, Mori Architects" },
-              { quote: "Our website finally reflects the brand we worked years to build.", name: "K. Sato", role: "Founder, Sakura Cafe" },
-              { quote: "Reliable, punctual, and quietly excellent. The Japanese way.", name: "M. Tanaka", role: "GM, Shibuya Tower" },
+              { quote: t("home.voices.q1"), name: t("home.voices.r1").split(" — ")[0], role: t("home.voices.r1").split(" — ")[1] ?? "" },
+              { quote: t("home.voices.q2"), name: t("home.voices.r2").split(" — ")[0], role: t("home.voices.r2").split(" — ")[1] ?? "" },
+              { quote: t("home.voices.q3"), name: t("home.voices.r3").split(" — ")[0], role: t("home.voices.r3").split(" — ")[1] ?? "" },
             ].map((tt, i) => (
               <Reveal key={tt.name} delay={i * 0.08}>
                 <div className="border border-background/10 p-8 h-full backdrop-blur">
@@ -246,19 +240,15 @@ function Index() {
       <section className="py-24 lg:py-32">
         <div className="mx-auto max-w-5xl px-6 lg:px-10 text-center">
           <Reveal>
-            <p className="text-xs tracking-[0.35em] uppercase text-accent mb-6">05 — Begin</p>
-            <h2 className="text-4xl md:text-6xl font-display font-medium text-balance leading-tight">
-              Ready to elevate your business in Japan?
-            </h2>
-            <p className="mt-6 text-muted-foreground text-lg max-w-2xl mx-auto">
-              A 30-minute consultation to understand your needs — at no cost, in English or Japanese.
-            </p>
+            <p className="text-xs tracking-[0.35em] uppercase text-accent mb-6">{t("home.cta.kicker")}</p>
+            <h2 className="text-4xl md:text-6xl font-display font-medium text-balance leading-tight">{t("home.cta.title")}</h2>
+            <p className="mt-6 text-muted-foreground text-lg max-w-2xl mx-auto">{t("home.cta.sub")}</p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Button asChild size="lg" className="bg-highlight hover:bg-highlight/90 text-highlight-foreground rounded-none h-14 px-8">
                 <Link to="/contact">{t("hero.cta1")} <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-none h-14 px-8">
-                <Link to="/services">Browse Services</Link>
+                <Link to="/services">{t("home.cta.browse")}</Link>
               </Button>
             </div>
           </Reveal>
