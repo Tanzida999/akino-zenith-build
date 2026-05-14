@@ -25,10 +25,10 @@ export function Navbar() {
       <div className="bg-highlight text-highlight-foreground">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 h-9 flex items-center justify-center gap-3 text-[11px] sm:text-xs tracking-widest uppercase font-medium">
           <Sparkles className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">期間限定キャンペーン —</span>
-          <span>20% OFF</span>
+          <span className="hidden sm:inline">{t("promo.label")}</span>
+          <span>{t("promo.off")}</span>
           <span className="opacity-70">|</span>
-          <Link to="/contact" className="underline underline-offset-4 hover:opacity-80">初回相談 無料</Link>
+          <Link to="/contact" className="underline underline-offset-4 hover:opacity-80">{t("promo.free")}</Link>
         </div>
       </div>
       <div className="glass border-b border-border/60">
@@ -59,13 +59,18 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => setLang(lang === "en" ? "ja" : "en")}
-            className="text-xs tracking-widest font-medium px-2 py-1 rounded border border-border hover:border-accent hover:text-accent transition-colors"
-            aria-label="Toggle language"
-          >
-            {lang === "en" ? "JA" : "EN"}
-          </button>
+          <div className="inline-flex rounded border border-border overflow-hidden text-[11px] tracking-widest font-semibold" role="group" aria-label="Language">
+            <button
+              onClick={() => setLang("ja")}
+              className={cn("px-2 py-1 transition-colors", lang === "ja" ? "bg-foreground text-background" : "hover:text-accent")}
+              aria-pressed={lang === "ja"}
+            >JP</button>
+            <button
+              onClick={() => setLang("en")}
+              className={cn("px-2 py-1 transition-colors border-l border-border", lang === "en" ? "bg-foreground text-background" : "hover:text-accent")}
+              aria-pressed={lang === "en"}
+            >EN</button>
+          </div>
           <button
             onClick={toggle}
             className="p-2 rounded hover:bg-muted transition-colors"
