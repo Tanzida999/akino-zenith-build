@@ -18,8 +18,8 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Akino Group — Professional Business Solutions in Japan" },
-      { name: "description", content: "Cleaning, web development, social media, and digital business support from a trusted Tokyo Kabushiki Kaisha." },
-      { property: "og:title", content: "Akino Group — Tokyo, Japan" },
+      { name: "description", content: "Cleaning, web development, social media, and digital business support from a trusted Saitama Kabushiki Kaisha." },
+      { property: "og:title", content: "Akino Group — Saitama, Japan" },
       { property: "og:description", content: "Reliable cleaning, web development, and digital services for modern businesses." },
     ],
   }),

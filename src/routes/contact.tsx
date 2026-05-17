@@ -18,7 +18,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "お問い合わせ — 株式会社アキノグループ" },
-      { name: "description", content: "東京・埼玉のアキノグループへお問い合わせ。日本語・英語で無料相談を承ります。" },
+      { name: "description", content: "埼玉のアキノグループへお問い合わせ。日本語・英語で無料相談を承ります。" },
     ],
   }),
 });
