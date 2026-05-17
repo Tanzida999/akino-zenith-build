@@ -9,7 +9,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "会社概要 — 株式会社アキノグループ" },
-      { name: "description", content: "株式会社アキノグループ — 東京を拠点に清掃・Web制作・デジタル支援を提供する信頼の会社。" },
+      { name: "description", content: "株式会社アキノグループ — 埼玉を拠点に清掃・Web制作・デジタル支援を提供する信頼の会社。" },
       { property: "og:title", content: "About Akino Group" },
     ],
   }),
