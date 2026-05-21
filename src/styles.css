@@ -104,8 +104,8 @@
   --shadow-soft: 0 4px 24px -8px oklch(0.15 0.005 280 / 0.08);
   --shadow-elegant: 0 24px 60px -20px oklch(0.15 0.005 280 / 0.18);
   --shadow-glow: 0 0 60px -10px oklch(0.32 0.11 250 / 0.25);
-  --font-display: "Noto Serif JP", "Cormorant Garamond", Georgia, serif;
-  --font-body: "Inter", "Noto Sans JP", system-ui, sans-serif;
+  --font-display: "Poppins", "Noto Sans JP", system-ui, sans-serif;
+  --font-body: "Roboto", "Noto Sans JP", system-ui, sans-serif;
 }
 
 .dark {
