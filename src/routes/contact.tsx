@@ -5,9 +5,7 @@ import { PageHeader } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
@@ -25,28 +23,27 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const { t } = useI18n();
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
+  const [phone, setPhone] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  const schema = z.object({
-    name: z.string().trim().min(1, t("ct.err.name")).max(100),
-    email: z.string().trim().email(t("ct.err.email")).max(255),
-    phone: z.string().trim().max(40).optional().or(z.literal("")),
-    service: z.string().min(1, t("ct.err.service")),
-    message: z.string().trim().min(1, t("ct.err.message")).max(1000),
-  });
+  const schema = z
+    .string()
+    .trim()
+    .min(7, "Please enter a valid phone number")
+    .max(20, "Please enter a valid phone number")
+    .regex(/^[+()\d\s-]+$/, "Please enter a valid phone number");
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const result = schema.safeParse(form);
+    const result = schema.safeParse(phone);
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
     }
     setSubmitting(true);
     setTimeout(() => {
-      toast.success(t("ct.toast.success"));
-      setForm({ name: "", email: "", phone: "", service: "", message: "" });
+      toast.success("Thank you! We will call you back within 1 business day.");
+      setPhone("");
       setSubmitting(false);
     }, 700);
   };
@@ -64,41 +61,25 @@ function Contact() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-5 gap-12">
           <Reveal className="lg:col-span-3">
             <form onSubmit={onSubmit} className="bg-background border border-border p-8 lg:p-10 shadow-[var(--shadow-soft)] space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <Label htmlFor="name" className="text-xs tracking-widest uppercase text-muted-foreground">{t("ct.name")}</Label>
-                  <Input id="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="mt-2 rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0" />
-                </div>
-                <div>
-                  <Label htmlFor="email" className="text-xs tracking-widest uppercase text-muted-foreground">{t("ct.email")}</Label>
-                  <Input id="email" type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-2 rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0" />
-                </div>
-                <div>
-                  <Label htmlFor="phone" className="text-xs tracking-widest uppercase text-muted-foreground">{t("ct.phone")}</Label>
-                  <Input id="phone" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="mt-2 rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0" />
-                </div>
-                <div>
-                  <Label className="text-xs tracking-widest uppercase text-muted-foreground">{t("ct.service")}</Label>
-                  <Select value={form.service} onValueChange={(v) => setForm({ ...form, service: v })}>
-                    <SelectTrigger className="mt-2 rounded-none border-0 border-b border-border focus:ring-0 px-0">
-                      <SelectValue placeholder={t("ct.service.placeholder")} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="cleaning">{t("ct.svc.cleaning")}</SelectItem>
-                      <SelectItem value="web">{t("ct.svc.web")}</SelectItem>
-                      <SelectItem value="social">{t("ct.svc.social")}</SelectItem>
-                      <SelectItem value="branding">{t("ct.svc.branding")}</SelectItem>
-                      <SelectItem value="other">{t("ct.svc.other")}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div>
+                <p className="text-xs tracking-[0.35em] uppercase text-accent mb-3">Free Consultation</p>
+                <h2 className="text-2xl md:text-3xl font-display font-semibold mb-2">Leave your number — we'll call you.</h2>
+                <p className="text-sm text-muted-foreground">Drop your phone number below. One of our specialists will call you back within 1 business day to discuss your project.</p>
               </div>
               <div>
-                <Label htmlFor="message" className="text-xs tracking-widest uppercase text-muted-foreground">{t("ct.message")}</Label>
-                <Textarea id="message" rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-2 rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0 resize-none" />
+                <Label htmlFor="phone" className="text-xs tracking-widest uppercase text-muted-foreground">Phone number *</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  inputMode="tel"
+                  placeholder="+81 90-0000-0000"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="mt-2 rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0 text-lg h-12"
+                />
               </div>
               <Button type="submit" disabled={submitting} className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-none h-14 px-8 w-full sm:w-auto">
-                {submitting ? t("ct.sending") : t("ct.send")} <ArrowRight className="ml-2 h-4 w-4" />
+                {submitting ? "Sending…" : "Request a callback"} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </form>
           </Reveal>

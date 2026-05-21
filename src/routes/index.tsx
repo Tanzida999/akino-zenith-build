@@ -27,12 +27,39 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const { t } = useI18n();
-  const slides = [slide1, slide2, slide3];
+  const services = [
+    {
+      img: slide1,
+      kicker: "01 — Cleaning",
+      title: "Spotless Spaces",
+      sub: "Office, retail, and facility cleaning held to omotenashi standards.",
+    },
+    {
+      img: slide2,
+      kicker: "02 — Web Development",
+      title: "Websites That Convert",
+      sub: "Fast, modern, and bilingual websites built with Japanese precision.",
+    },
+    {
+      img: slide3,
+      kicker: "03 — Digital Marketing",
+      title: "Growth, Measured",
+      sub: "SEO, paid ads, and analytics that turn attention into customers.",
+    },
+    {
+      img: slide1,
+      kicker: "04 — Social Media",
+      title: "Communities That Stay",
+      sub: "Strategy, content, and community management across every platform.",
+    },
+  ];
+  const slides = services.map((s) => s.img);
   const [active, setActive] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setActive((i) => (i + 1) % slides.length), 5000);
+    const id = setInterval(() => setActive((i) => (i + 1) % services.length), 4500);
     return () => clearInterval(id);
-  }, [slides.length]);
+  }, [services.length]);
+  const current = services[active];
   return (
     <>
       {/* HERO */}
@@ -58,30 +85,39 @@ function Index() {
           {t("hero.vrl")}
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-32 pb-20 w-full">
+          <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4 flex items-center gap-3">
+            <span className="h-px w-10 bg-accent" /> Akino Group — All-in-One Business Solutions
+          </p>
           <motion.p
+            key={`kicker-${active}`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-xs tracking-[0.35em] uppercase text-accent mb-6 flex items-center gap-3"
+            transition={{ duration: 0.5 }}
+            className="text-sm tracking-[0.35em] uppercase text-highlight mb-6"
           >
-            <span className="h-px w-10 bg-accent" /> {t("hero.kicker")}
+            {current.kicker}
           </motion.p>
           <motion.h1
+            key={`title-${active}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-display font-medium leading-[1.05] max-w-5xl text-balance"
+            transition={{ duration: 0.7 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-display font-semibold leading-[1.05] max-w-5xl text-balance"
           >
-            {t("hero.title")}
+            {current.title}
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            key={`sub-${active}`}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25 }}
-            className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
           >
-            {t("hero.sub")}
+            {current.sub}
           </motion.p>
+          <p className="mt-4 text-sm md:text-base text-foreground/70 max-w-2xl">
+            Cleaning · Web Development · Digital Marketing · Social Media Management — one trusted partner for everything your business needs.
+          </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -97,11 +133,11 @@ function Index() {
           </motion.div>
           {/* Slide indicators */}
           <div className="mt-16 flex items-center gap-3">
-            {slides.map((_, i) => (
+            {services.map((s, i) => (
               <button
-                key={i}
+                key={s.kicker}
                 onClick={() => setActive(i)}
-                aria-label={`Slide ${i + 1}`}
+                aria-label={s.title}
                 className={`h-px transition-all ${active === i ? "w-12 bg-accent" : "w-6 bg-foreground/30"}`}
               />
             ))}
