@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useI18n } from "@/lib/i18n";
+import logoUrl from "@/assets/akino-logo.png";
 
 export function Footer() {
   const { t } = useI18n();
@@ -8,7 +9,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2 mb-4">
-            <span className="h-7 w-1 bg-accent rounded-full" />
+            <img src={logoUrl} alt="Akino Group" className="h-9 w-9 rounded-full object-cover" />
             <span className="font-display text-lg tracking-[0.2em] font-semibold">AKINO GROUP</span>
           </div>
           <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">{t("footer.about")}</p>

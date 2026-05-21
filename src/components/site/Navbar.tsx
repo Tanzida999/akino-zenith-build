@@ -5,6 +5,7 @@ import { useI18n } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logoUrl from "@/assets/akino-logo.png";
 
 export function Navbar() {
   const { t, lang, setLang } = useI18n();
@@ -34,7 +35,7 @@ export function Navbar() {
       <div className="glass border-b border-border/60">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="h-7 w-1 bg-accent rounded-full" />
+          <img src={logoUrl} alt="Akino Group" className="h-9 w-9 rounded-full object-cover" />
           <span className="font-display text-lg tracking-[0.2em] font-semibold">AKINO</span>
           <span className="text-xs tracking-[0.3em] text-muted-foreground">GROUP</span>
         </Link>
