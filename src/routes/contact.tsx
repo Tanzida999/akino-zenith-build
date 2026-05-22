@@ -29,9 +29,9 @@ function Contact() {
   const schema = z
     .string()
     .trim()
-    .min(7, "Please enter a valid phone number")
-    .max(20, "Please enter a valid phone number")
-    .regex(/^[+()\d\s-]+$/, "Please enter a valid phone number");
+    .min(7, t("ct.cb.err"))
+    .max(20, t("ct.cb.err"))
+    .regex(/^[+()\d\s-]+$/, t("ct.cb.err"));
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ function Contact() {
     }
     setSubmitting(true);
     setTimeout(() => {
-      toast.success("Thank you! We will call you back within 1 business day.");
+      toast.success(t("ct.cb.success"));
       setPhone("");
       setSubmitting(false);
     }, 700);
@@ -62,24 +62,24 @@ function Contact() {
           <Reveal className="lg:col-span-3">
             <form onSubmit={onSubmit} className="bg-background border border-border p-8 lg:p-10 shadow-[var(--shadow-soft)] space-y-6">
               <div>
-                <p className="text-xs tracking-[0.35em] uppercase text-accent mb-3">Free Consultation</p>
-                <h2 className="text-2xl md:text-3xl font-display font-semibold mb-2">Leave your number — we'll call you.</h2>
-                <p className="text-sm text-muted-foreground">Drop your phone number below. One of our specialists will call you back within 1 business day to discuss your project.</p>
+                <p className="text-xs tracking-[0.35em] uppercase text-accent mb-3">{t("ct.cb.kicker")}</p>
+                <h2 className="text-2xl md:text-3xl font-display font-semibold mb-2">{t("ct.cb.title")}</h2>
+                <p className="text-sm text-muted-foreground">{t("ct.cb.desc")}</p>
               </div>
               <div>
-                <Label htmlFor="phone" className="text-xs tracking-widest uppercase text-muted-foreground">Phone number *</Label>
+                <Label htmlFor="phone" className="text-xs tracking-widest uppercase text-muted-foreground">{t("ct.cb.label")}</Label>
                 <Input
                   id="phone"
                   type="tel"
                   inputMode="tel"
-                  placeholder="+81 90-0000-0000"
+                  placeholder={t("ct.cb.placeholder")}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="mt-2 rounded-none border-0 border-b border-border focus-visible:ring-0 focus-visible:border-accent px-0 text-lg h-12"
                 />
               </div>
               <Button type="submit" disabled={submitting} className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-none h-14 px-8 w-full sm:w-auto">
-                {submitting ? "Sending…" : "Request a callback"} <ArrowRight className="ml-2 h-4 w-4" />
+                {submitting ? t("ct.cb.sending") : t("ct.cb.submit")} <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </form>
           </Reveal>
