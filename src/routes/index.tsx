@@ -28,30 +28,10 @@ export const Route = createFileRoute("/")({
 function Index() {
   const { t } = useI18n();
   const services = [
-    {
-      img: slide1,
-      kicker: "01 — Cleaning",
-      title: "Spotless Spaces",
-      sub: "Office, retail, and facility cleaning held to omotenashi standards.",
-    },
-    {
-      img: slide2,
-      kicker: "02 — Web Development",
-      title: "Websites That Convert",
-      sub: "Fast, modern, and bilingual websites built with Japanese precision.",
-    },
-    {
-      img: slide3,
-      kicker: "03 — Digital Marketing",
-      title: "Growth, Measured",
-      sub: "SEO, paid ads, and analytics that turn attention into customers.",
-    },
-    {
-      img: slide1,
-      kicker: "04 — Social Media",
-      title: "Communities That Stay",
-      sub: "Strategy, content, and community management across every platform.",
-    },
+    { img: slide1, kicker: t("hero.s1.kicker"), title: t("hero.s1.title"), sub: t("hero.s1.sub") },
+    { img: slide2, kicker: t("hero.s2.kicker"), title: t("hero.s2.title"), sub: t("hero.s2.sub") },
+    { img: slide3, kicker: t("hero.s3.kicker"), title: t("hero.s3.title"), sub: t("hero.s3.sub") },
+    { img: slide1, kicker: t("hero.s4.kicker"), title: t("hero.s4.title"), sub: t("hero.s4.sub") },
   ];
   const slides = services.map((s) => s.img);
   const [active, setActive] = useState(0);
@@ -86,7 +66,7 @@ function Index() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10 pt-32 pb-20 w-full">
           <p className="text-xs tracking-[0.35em] uppercase text-accent mb-4 flex items-center gap-3">
-            <span className="h-px w-10 bg-accent" /> Akino Group — All-in-One Business Solutions
+            <span className="h-px w-10 bg-accent" /> {t("hero.banner")}
           </p>
           <motion.p
             key={`kicker-${active}`}
@@ -116,7 +96,7 @@ function Index() {
             {current.sub}
           </motion.p>
           <p className="mt-4 text-sm md:text-base text-foreground/70 max-w-2xl">
-            Cleaning · Web Development · Digital Marketing · Social Media Management — one trusted partner for everything your business needs.
+            {t("hero.tagline")}
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
