@@ -137,7 +137,7 @@ function Index() {
               { title: t("home.svc.cleaning"), jp: t("home.svc.cleaning.jp"), desc: t("home.svc.cleaning.desc") },
               { title: t("home.svc.web"), jp: t("home.svc.web.jp"), desc: t("home.svc.web.desc") },
               { title: t("home.svc.sns"), jp: t("home.svc.sns.jp"), desc: t("home.svc.sns.desc") },
-              { title: t("home.svc.digital"), jp: t("home.svc.digital.jp"), desc: t("home.svc.digital.desc") },
+              { title: t("home.svc.trade"), jp: t("home.svc.trade.jp"), desc: t("home.svc.trade.desc") },
             ].map((s, i) => (
               <Reveal key={s.title} delay={i * 0.08}>
                 <div className="bg-background p-8 lg:p-10 h-full group hover:bg-secondary transition-colors">
