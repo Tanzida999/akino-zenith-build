@@ -94,6 +94,35 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap",
       },
+      { rel: "canonical", href: "https://akinogroup.com/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Akino Group Co., Ltd.",
+          alternateName: ["Akino Group", "株式会社アキノグループ"],
+          url: "https://akinogroup.com/",
+          logo: "https://akinogroup.com/favicon.png",
+          foundingDate: "2024",
+          description:
+            "Akino Group is a Saitama-based company founded in 2024 offering cleaning, web development, social media management, and import/export services.",
+          address: {
+            "@type": "PostalAddress",
+            addressRegion: "Saitama",
+            addressCountry: "JP",
+          },
+          email: "info@akino-group.jp",
+          knowsAbout: [
+            "Cleaning Services",
+            "Web Development",
+            "Social Media Management",
+            "Import Export",
+          ],
+        }),
+      },
     ],
   }),
   component: RootComponent,
