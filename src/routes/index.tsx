@@ -23,6 +23,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Cleaning, web development, social media management, and import/export from Akino Group, Saitama, Japan." },
       { property: "og:url", content: "https://akinogroup.com/" },
     ],
+    links: [{ rel: "canonical", href: "https://akinogroup.com/" }],
   }),
 });
 
