@@ -76,12 +76,12 @@ function About() {
           </Reveal>
           <div className="space-y-12 relative before:content-[''] before:absolute before:left-24 before:top-2 before:bottom-2 before:w-px before:bg-border">
             {[
-              { year: "2018", title: t("about.t1.title"), desc: t("about.t1.desc") },
-              { year: "2020", title: t("about.t2.title"), desc: t("about.t2.desc") },
-              { year: "2022", title: t("about.t3.title"), desc: t("about.t3.desc") },
-              { year: "2024", title: t("about.t4.title"), desc: t("about.t4.desc") },
+              { year: "2024", title: t("about.t1.title"), desc: t("about.t1.desc") },
+              { year: t("about.t2.year"), title: t("about.t2.title"), desc: t("about.t2.desc") },
+              { year: t("about.t3.year"), title: t("about.t3.title"), desc: t("about.t3.desc") },
+              { year: t("about.t4.year"), title: t("about.t4.title"), desc: t("about.t4.desc") },
             ].map((m, i) => (
-              <Reveal key={m.year} delay={i * 0.05}>
+              <Reveal key={i} delay={i * 0.05}>
                 <div className="grid grid-cols-[6rem_1fr] gap-8 items-start">
                   <div className="font-display text-2xl text-accent relative">
                     <span className="absolute right-0 top-3 h-3 w-3 rounded-full bg-accent translate-x-[calc(50%+0.5rem)]" />
@@ -106,10 +106,10 @@ function About() {
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: "Akino Hiroshi", role: t("about.team.p1.role"), jp: "代表取締役" },
-              { name: "Sato Yuki", role: t("about.team.p2.role"), jp: "執行役員" },
-              { name: "Tanaka Mei", role: t("about.team.p3.role"), jp: "リードエンジニア" },
-              { name: "Yamada Ren", role: t("about.team.p4.role"), jp: "ブランド戦略" },
+              { name: "Akino Sadia", role: t("about.team.p1.role"), jp: "社長" },
+              { name: "Tanveer Ahammed", role: t("about.team.p2.role"), jp: "部長" },
+              { name: "Tanzida Nowshin", role: t("about.team.p3.role"), jp: "ウェブ開発" },
+              { name: "Abrar Ahammed Tonmoy", role: t("about.team.p4.role"), jp: "マーケティング" },
             ].map((p, i) => (
               <Reveal key={p.name} delay={i * 0.06}>
                 <div className="bg-background border border-border p-6 text-center">
