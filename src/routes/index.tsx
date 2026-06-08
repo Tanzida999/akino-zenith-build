@@ -17,10 +17,11 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Akino Group — Professional Business Solutions in Japan" },
-      { name: "description", content: "Cleaning, web development, social media, and digital business support from a trusted Saitama Kabushiki Kaisha." },
-      { property: "og:title", content: "Akino Group — Saitama, Japan" },
-      { property: "og:description", content: "Reliable cleaning, web development, and digital services for modern businesses." },
+      { title: "Akino Group | Cleaning, Web Development, Social Media & Import Export" },
+      { name: "description", content: "Akino Group — founded 2024 in Saitama, Japan. Your all-in-one partner for cleaning, web development, social media management, and import/export." },
+      { property: "og:title", content: "Akino Group — All-in-One Business Solutions in Japan" },
+      { property: "og:description", content: "Cleaning, web development, social media management, and import/export from Akino Group, Saitama, Japan." },
+      { property: "og:url", content: "https://akinogroup.com/" },
     ],
   }),
 });
