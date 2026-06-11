@@ -113,7 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressRegion: "Saitama",
             addressCountry: "JP",
           },
-          email: "info@akino-group.jp",
+          email: "akinogroup247@gmail.com",
           knowsAbout: [
             "Cleaning Services",
             "Web Development",

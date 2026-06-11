@@ -28,7 +28,7 @@ export function Footer() {
           <h4 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">{t("footer.contact")}</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li>〒344-0124<br />埼玉県春日部市<br />せんげん台 1-129</li>
-            <li>info@akino-group.jp</li>
+            <li>akinogroup247@gmail.com</li>
             <li>+81 3-0000-0000</li>
           </ul>
         </div>
