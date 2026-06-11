@@ -89,7 +89,7 @@ function Contact() {
               <p className="text-xs tracking-widest uppercase text-accent mb-6">{t("ct.direct")}</p>
               <ul className="space-y-5 text-sm">
                 <li className="flex gap-4"><MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" /><span>〒344-0124 埼玉県春日部市せんげん台 1-129</span></li>
-                <li className="flex gap-4"><Mail className="h-5 w-5 text-accent shrink-0 mt-0.5" /><a href="mailto:info@akino-group.jp" className="hover:text-accent">info@akino-group.jp</a></li>
+                <li className="flex gap-4"><Mail className="h-5 w-5 text-accent shrink-0 mt-0.5" /><a href="mailto:akinogroup247@gmail.com" className="hover:text-accent">akinogroup247@gmail.com</a></li>
                 <li className="flex gap-4"><Phone className="h-5 w-5 text-accent shrink-0 mt-0.5" /><a href="tel:+81300000000" className="hover:text-accent">+81 3-0000-0000</a></li>
               </ul>
             </div>
